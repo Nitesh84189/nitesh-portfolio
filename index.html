@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitesh Kumar — Computer Science (AI) & Data Engineer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            background: '#080C14',
+            surface: '#0E1424',
+            accent: {
+              DEFAULT: '#00F0FF',
+              hover: '#38BDF8',
+              muted: 'rgba(0, 240, 255, 0.12)',
+              glow: 'rgba(0, 240, 255, 0.25)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Background Grid Pattern with Radial Gradient Mask */
+    .grid-bg {
+      background-image: 
+        linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 20%, transparent 75%);
+      mask-image: radial-gradient(circle at 50% 30%, #000 20%, transparent 75%);
+    }
+
+    /* Glassmorphic card styling */
+    .glass-card {
+      background: rgba(14, 20, 36, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 240, 255, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(0, 240, 255, 0.15), 0 0 1px 1px rgba(0, 240, 255, 0.2);
+    }
+
+    /* Subtle ambient glows */
+    .glow-cyan {
+      box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.3);
+    }
+    .glow-cyan-sm {
+      box-shadow: 0 0 15px -3px rgba(0, 240, 255, 0.25);
+    }
+  </style>
+</head>
+
+<body class="bg-background text-slate-200 font-sans antialiased selection:bg-accent/30 selection:text-white relative min-h-screen overflow-x-hidden">
+
+  <!-- Ambient background glow blobs -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute -top-40 left-1/4 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-10 left-10 w-[450px] h-[450px] bg-cyan-400/8 rounded-full blur-[130px]"></div>
+    <div class="absolute inset-0 grid-bg"></div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-20">
+
+    <!-- ======================================================= -->
+    <!-- TOP NAVIGATION BAR                                      -->
+    <!-- ======================================================= -->
+    <header class="flex items-center justify-between pb-12 border-b border-white/5">
+      <div class="flex items-center gap-3.5">
+        <div class="size-11 rounded-xl overflow-hidden border-2 border-accent/40 glow-cyan-sm bg-surface shrink-0 shadow-lg">
+          <img src="profile.jpg" alt="Nitesh Kumar" class="w-full h-full object-cover object-top" />
+        </div>
+        <div>
+          <h1 class="text-sm font-semibold text-white tracking-wide flex items-center gap-2">
+            <span>Nitesh Kumar</span>
+            <span class="inline-block size-2 rounded-full bg-emerald-400 animate-pulse" title="Available for Work"></span>
+          </h1>
+          <p class="text-xs text-slate-400 font-mono">B.Tech CSE (AI) · Data & Backend Engineer</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-1.5 p-1.5 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md">
+        <a href="#about" class="px-4 py-1.5 rounded-full text-xs font-medium text-accent bg-accent/10 border border-accent/20 transition-colors">About</a>
+        <a href="#experience" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-colors">Experience</a>
+        <a href="#education" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-colors">Education</a>
+        <a href="#projects" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-colors">Projects</a>
+        <a href="#skills" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-colors">Skills</a>
+        <a href="#contact" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://www.linkedin.com/in/nitesh-kumar-079bb834b" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white text-xs font-mono transition-colors">
+          <i data-lucide="linkedin" class="size-3.5 text-accent"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:niteshkumar24047@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 text-accent hover:bg-accent hover:text-background font-medium text-xs transition-all duration-300 glow-cyan-sm">
+          <i data-lucide="mail" class="size-3.5"></i>
+          <span>Get in Touch</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ======================================================= -->
+    <!-- FLAGSHIP HERO / ABOUT TERMINAL WINDOW                   -->
+    <!-- (Faithful implementation of ashishkumar5de terminal UI) -->
+    <!-- ======================================================= -->
+    <section id="about" class="pt-6 pb-16">
+      
+      <!-- Ambient container with subtle background watermark graphics -->
+      <div class="relative max-w-4xl mx-auto">
+        
+        <!-- Faint background blueprint graphics matching reference -->
+        <div class="absolute -top-8 -left-8 size-36 text-cyan-400/[0.05] pointer-events-none select-none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+            <path d="M3 12A9 3 0 0 0 21 12"></path>
+          </svg>
+        </div>
+        <div class="absolute top-1/3 -right-12 size-48 text-cyan-400/[0.04] pointer-events-none select-none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+            <rect width="6" height="6" x="9" y="2" rx="1"></rect>
+            <rect width="6" height="6" x="2" y="16" rx="1"></rect>
+            <rect width="6" height="6" x="16" y="16" rx="1"></rect>
+            <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
+            <path d="M12 8v4"></path>
+          </svg>
+        </div>
+        <div class="absolute -bottom-10 right-10 size-40 text-cyan-400/[0.04] pointer-events-none select-none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+          </svg>
+        </div>
+
+        <!-- Ambient Cyan Glow Blob behind terminal -->
+        <div class="absolute -inset-1 bg-gradient-to-r from-accent/20 via-cyan-500/15 to-blue-600/20 rounded-3xl blur-2xl opacity-60"></div>
+
+        <!-- Terminal Window Card -->
+        <div class="relative rounded-2xl sm:rounded-3xl bg-[#090E1A]/95 border border-white/10 shadow-[0_0_50px_-10px_rgba(0,240,255,0.18)] backdrop-blur-xl overflow-hidden">
+          
+          <!-- Terminal Header Bar -->
+          <div class="flex items-center justify-between px-5 sm:px-6 py-3.5 border-b border-white/10 bg-white/[0.02]">
+            <div class="flex items-center gap-2">
+              <span class="size-3 rounded-full bg-[#ff5f56] hover:opacity-80 transition-opacity"></span>
+              <span class="size-3 rounded-full bg-[#ffbd2e] hover:opacity-80 transition-opacity"></span>
+              <span class="size-3 rounded-full bg-[#27c93f] hover:opacity-80 transition-opacity"></span>
+              <span class="ml-3 font-mono text-xs text-slate-400 font-medium">
+                &gt;_ guest@data-platform ~ /usr/bin/profile
+              </span>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 text-[10px] font-mono text-slate-500">
+              <span>bash · utf-8</span>
+            </div>
+          </div>
+
+          <!-- Terminal Content Body -->
+          <div class="p-6 sm:p-10 space-y-7">
+            
+            <!-- Avatar & Status Row -->
+            <div class="flex flex-wrap items-center gap-4 sm:gap-5">
+              <div class="relative size-16 sm:size-20 rounded-full ring-2 ring-accent glow-cyan-sm overflow-hidden bg-[#0c1220] shrink-0">
+                <img 
+                  src="profile.jpg" 
+                  alt="Nitesh Kumar" 
+                  class="w-full h-full object-cover object-top" 
+                />
+              </div>
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/40 bg-accent/10 text-accent font-mono text-xs font-semibold glow-cyan-sm">
+                <span class="size-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>STATUS: AVAILABLE FOR HIRE</span>
+              </div>
+            </div>
+
+            <!-- Command 1: $ gcloud auth list -->
+            <div class="space-y-1">
+              <div class="text-accent font-mono text-xs sm:text-sm flex items-center gap-2">
+                <span class="text-slate-500 font-semibold">$</span>
+                <span>gcloud auth list</span>
+              </div>
+              <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-sans tracking-tight flex items-center">
+                <span>Nitesh Kumar</span>
+                <span class="w-3.5 sm:w-4 h-8 sm:h-11 bg-accent inline-block animate-pulse ml-2"></span>
+              </div>
+            </div>
+
+            <!-- Command 2: $ dbt debug --profile data_engineer -->
+            <div class="space-y-1">
+              <div class="text-accent font-mono text-xs sm:text-sm flex items-center gap-2">
+                <span class="text-slate-500 font-semibold">$</span>
+                <span>dbt debug --profile data_engineer</span>
+              </div>
+              <div class="text-lg sm:text-2xl font-bold text-slate-100 font-sans tracking-tight">
+                Computer Science (AI) &amp; Data Systems Engineer
+              </div>
+            </div>
+
+            <!-- Command 3: $ python -m ai_pipeline --target production -->
+            <div class="space-y-1.5">
+              <div class="text-accent font-mono text-xs sm:text-sm flex items-center gap-2">
+                <span class="text-slate-500 font-semibold">$</span>
+                <span>python -m ai_pipeline --target production</span>
+              </div>
+              <p class="text-slate-300 font-mono text-xs sm:text-sm leading-relaxed max-w-2xl">
+                I bridge the gap between complex computer vision systems, database engineering, and user-facing business insights — turning raw data into decisions.
+              </p>
+            </div>
+
+            <!-- Command 4: $ ls -l ./actions -->
+            <div class="space-y-3 pt-2">
+              <div class="text-accent font-mono text-xs sm:text-sm flex items-center gap-2">
+                <span class="text-slate-500 font-semibold">$</span>
+                <span>ls -l ./actions</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-3 pt-1">
+                <!-- ./contact.sh -->
+                <a 
+                  href="#contact" 
+                  class="px-4 py-2 rounded-xl bg-accent/20 border border-accent/60 text-accent hover:bg-accent hover:text-[#080C14] font-mono text-xs font-semibold transition-all duration-300 glow-cyan-sm flex items-center gap-2"
+                >
+                  <i data-lucide="terminal" class="size-3.5"></i>
+                  <span>./contact.sh</span>
+                </a>
+
+                <!-- github -->
+                <a 
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-slate-200 font-mono text-xs font-medium transition-colors flex items-center gap-2"
+                >
+                  <i data-lucide="github" class="size-3.5"></i>
+                  <span>github</span>
+                </a>
+
+                <!-- linkedin -->
+                <a 
+                  href="https://www.linkedin.com/in/nitesh-kumar-079bb834b" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-accent/40 text-slate-200 font-mono text-xs font-medium transition-colors flex items-center gap-2"
+                >
+                  <i data-lucide="linkedin" class="size-3.5 text-accent"></i>
+                  <span>linkedin</span>
+                </a>
+
+                <!-- Call / Phone badge -->
+                <a 
+                  href="tel:+919142473572" 
+                  class="px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-300 font-mono text-xs transition-colors flex items-center gap-1.5"
+                >
+                  <i data-lucide="phone" class="size-3 text-accent"></i>
+                  <span>+91 9142473572</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- CORE CAPABILITIES & PILLARS                             -->
+    <!-- ======================================================= -->
+    <section id="capabilities" class="pt-8 pb-20 border-t border-white/5">
+      
+      <!-- Eyebrow + Section Heading -->
+      <div class="space-y-3 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-mono font-medium tracking-wide glow-cyan-sm">
+          <span class="size-1.5 rounded-full bg-accent animate-pulse"></span>
+          TECHNICAL PILLARS & ARCHITECTURE
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          Engineering precision logic <br class="hidden sm:inline" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-cyan-300 to-blue-400">
+            from database algorithms to applied AI.
+          </span>
+        </h2>
+      </div>
+
+      <!-- 5-Column Grid Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        
+        <!-- Left Column: Story Bio & Stats (2 Cols) -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="glass-card p-6 sm:p-7 rounded-2xl border-white/10 space-y-4">
+            <div class="flex items-center gap-4 pb-4 border-b border-white/10">
+              <div class="size-16 rounded-2xl overflow-hidden border-2 border-accent/40 glow-cyan-sm shrink-0 bg-[#0c1220]">
+                <img src="profile.jpg" alt="Nitesh Kumar" class="w-full h-full object-cover object-top" />
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                  <span>Nitesh Kumar</span>
+                  <span class="size-2 rounded-full bg-accent"></span>
+                </h3>
+                <p class="text-xs text-accent font-mono">B.Tech CSE (AI) · GEC Lakhisarai</p>
+                <div class="flex items-center gap-2 mt-1 text-[11px] text-slate-400 font-mono">
+                  <span class="size-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Available for Engineering Roles</span>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+              <span class="size-1.5 rounded-full bg-accent"></span>
+              Core Profile & Approach
+            </h4>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              I am a Computer Science Engineer specializing in <strong>Artificial Intelligence (B.Tech 2022–2026)</strong> at Government Engineering College Lakhisarai, driven by a passion for data-driven engineering.
+            </p>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              My technical foundation blends hands-on <strong>computer vision</strong> (OpenCV, Haar Cascade, LBPH face recognition), <strong>relational database modeling</strong> (SQL normalization and operational query efficiency), and <strong>full-stack API integration</strong> with Flask and Django.
+            </p>
+
+            <!-- Key Quick Facts List -->
+            <div class="pt-4 border-t border-white/5 space-y-2.5 text-xs font-mono text-slate-400">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Degree:</span>
+                <span class="text-slate-200">B.Tech – CSE (AI) [2022–2026]</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Institution:</span>
+                <span class="text-slate-200">GEC Lakhisarai</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Core Stacks:</span>
+                <span class="text-accent">Python · SQL · OpenCV · Flask/Django</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Base Location:</span>
+                <span class="text-slate-200">Patna, Bihar, India</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500">Spoken:</span>
+                <span class="text-slate-200">Hindi · English</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats 2x2 Grid -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="glass-card p-4 rounded-xl text-center">
+              <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">2026</div>
+              <div class="text-xs text-slate-400 mt-1">B.Tech CSE (AI)</div>
+            </div>
+            <div class="glass-card p-4 rounded-xl text-center">
+              <div class="text-2xl sm:text-3xl font-extrabold text-accent font-mono">100%</div>
+              <div class="text-xs text-slate-400 mt-1">Real-time Biometrics</div>
+            </div>
+            <div class="glass-card p-4 rounded-xl text-center">
+              <div class="text-2xl sm:text-3xl font-extrabold text-accent font-mono">3NF</div>
+              <div class="text-xs text-slate-400 mt-1">Normalized Schemas</div>
+            </div>
+            <div class="glass-card p-4 rounded-xl text-center">
+              <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">REST</div>
+              <div class="text-xs text-slate-400 mt-1">API Integrations</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: 4 Capability Pillar Cards (3 Cols) -->
+        <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          
+          <!-- Pillar Card 1: AI & Computer Vision -->
+          <div class="glass-card p-6 rounded-2xl relative group flex flex-col justify-between">
+            <div>
+              <div class="size-11 rounded-xl bg-background/80 border border-white/10 flex items-center justify-center text-accent mb-4 group-hover:scale-110 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-300 glow-cyan-sm">
+                <i data-lucide="scan-face" class="size-5"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-accent transition-colors">
+                Computer Vision & AI
+              </h3>
+              <p class="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Building real-time image processing models using OpenCV, Haar Cascade classifiers for facial detection, and LBPH algorithms for automated biometric recognition.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">OpenCV</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Haar Cascade</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">LBPH</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Python</span>
+            </div>
+          </div>
+
+          <!-- Pillar Card 2: Database Management & SQL -->
+          <div class="glass-card p-6 rounded-2xl relative group flex flex-col justify-between">
+            <div>
+              <div class="size-11 rounded-xl bg-background/80 border border-white/10 flex items-center justify-center text-cyan-300 mb-4 group-hover:scale-110 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-300 glow-cyan-sm">
+                <i data-lucide="database" class="size-5"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-accent transition-colors">
+                Database Architecture & SQL
+              </h3>
+              <p class="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Designing normalized relational schemas (1NF to 3NF/BCNF) to eliminate data redundancy, enforce ACID integrity, and tune complex queries for operational decision support.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">SQL</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">MySQL</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Normalization</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">DBMS</span>
+            </div>
+          </div>
+
+          <!-- Pillar Card 3: Data Analytics & NumPy/Pandas -->
+          <div class="glass-card p-6 rounded-2xl relative group flex flex-col justify-between">
+            <div>
+              <div class="size-11 rounded-xl bg-background/80 border border-white/10 flex items-center justify-center text-accent mb-4 group-hover:scale-110 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-300 glow-cyan-sm">
+                <i data-lucide="bar-chart-3" class="size-5"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-accent transition-colors">
+                Data Handling & Analytics
+              </h3>
+              <p class="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Conducting standard statistical analysis, data munging, missing value imputation, and matrix computations across large datasets utilizing Pandas and NumPy.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Pandas</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">NumPy</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Data Cleaning</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Analytics</span>
+            </div>
+          </div>
+
+          <!-- Pillar Card 4: Backend & REST APIs -->
+          <div class="glass-card p-6 rounded-2xl relative group flex flex-col justify-between">
+            <div>
+              <div class="size-11 rounded-xl bg-background/80 border border-white/10 flex items-center justify-center text-cyan-300 mb-4 group-hover:scale-110 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-300 glow-cyan-sm">
+                <i data-lucide="server" class="size-5"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-accent transition-colors">
+                Backend & REST APIs
+              </h3>
+              <p class="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Integrating robust backend architectures using Flask and Django to create high-throughput endpoints bridging client interfaces with persistent relational databases.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Flask</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Django</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">RESTful APIs</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Tkinter GUI</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- EXPERIENCE SECTION                                      -->
+    <!-- ======================================================= -->
+    <section id="experience" class="py-16 border-t border-white/5">
+      <div class="space-y-3 mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-mono font-medium tracking-wide glow-cyan-sm">
+          <span class="size-1.5 rounded-full bg-accent animate-pulse"></span>
+          WORK EXPERIENCE
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Practical Industry Exposure
+        </h2>
+      </div>
+
+      <div class="glass-card p-6 sm:p-8 rounded-2xl relative overflow-hidden group">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-3">
+              <h3 class="text-xl font-bold text-white group-hover:text-accent transition-colors">
+                Software & Data Engineering Intern
+              </h3>
+              <span class="px-2.5 py-0.5 text-xs font-mono rounded-full bg-accent/10 border border-accent/30 text-accent">
+                Internship
+              </span>
+            </div>
+            <p class="text-slate-300 text-sm mt-1">
+              Aagaaz Training Center Pvt. Ltd., Patna (Bihar)
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-mono text-slate-400 bg-white/[0.04] px-3.5 py-2 rounded-xl border border-white/5">
+            <i data-lucide="calendar" class="size-3.5 text-accent"></i>
+            <span>20/05/2025 to 20/06/2025</span>
+            <span class="text-slate-600">|</span>
+            <i data-lucide="map-pin" class="size-3.5 text-accent"></i>
+            <span>Patna, Bihar</span>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-background/40 p-5 rounded-xl border border-white/5 space-y-2">
+            <div class="flex items-center gap-2 text-accent text-sm font-semibold">
+              <i data-lucide="database" class="size-4"></i>
+              <span>Data Handling & Cleaning</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Utilized libraries such as <strong>Pandas and NumPy</strong> to clean, structure, and analyze large datasets, performing exploratory analysis and preparing inputs for downstream analytics.
+            </p>
+          </div>
+
+          <div class="bg-background/40 p-5 rounded-xl border border-white/5 space-y-2">
+            <div class="flex items-center gap-2 text-accent text-sm font-semibold">
+              <i data-lucide="code-2" class="size-4"></i>
+              <span>API & Backend Integration</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Integrated RESTful APIs using <strong>Flask / Django</strong> to facilitate seamless communication between the front-end user interface and the <strong>MySQL database</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- EDUCATION SECTION                                       -->
+    <!-- ======================================================= -->
+    <section id="education" class="py-16 border-t border-white/5">
+      <div class="space-y-3 mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-mono font-medium tracking-wide glow-cyan-sm">
+          <span class="size-1.5 rounded-full bg-accent animate-pulse"></span>
+          ACADEMIC BACKGROUND
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Education & Qualifications
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- B.Tech -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-accent/30 relative">
+          <div class="absolute top-4 right-4">
+            <span class="px-2.5 py-0.5 text-[11px] font-mono font-semibold rounded-full bg-accent/15 border border-accent/30 text-accent">
+              Pursuing
+            </span>
+          </div>
+          <div>
+            <div class="size-10 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent mb-4">
+              <i data-lucide="graduation-cap" class="size-5"></i>
+            </div>
+            <span class="text-xs font-mono text-accent font-semibold">2022 — 2026</span>
+            <h3 class="text-lg font-bold text-white mt-1">
+              B.Tech in Computer Science (AI)
+            </h3>
+            <p class="text-xs text-slate-300 font-medium mt-1">
+              Government Engineering College Lakhisarai
+            </p>
+            <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+              Specialized coursework in Artificial Intelligence, Machine Learning algorithms, Data Structures, Relational Database Management Systems, and Python development.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
+            <i data-lucide="tag" class="size-3 text-accent"></i>
+            <span>Branch: cse(AI)</span>
+          </div>
+        </div>
+
+        <!-- Intermediate -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="size-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-slate-300 mb-4">
+              <i data-lucide="book-open" class="size-5"></i>
+            </div>
+            <span class="text-xs font-mono text-slate-400 font-semibold">2020 — 2022</span>
+            <h3 class="text-lg font-bold text-white mt-1">
+              Intermediate Education
+            </h3>
+            <p class="text-xs text-slate-300 font-medium mt-1">
+              St. Joseph School NTPC Kahalgaon
+            </p>
+            <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+              Higher secondary education focused on Science, Mathematics, Physics, and analytical problem-solving foundation.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
+            <i data-lucide="check-circle" class="size-3 text-accent"></i>
+            <span>Completed</span>
+          </div>
+        </div>
+
+        <!-- Secondary -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="size-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-slate-300 mb-4">
+              <i data-lucide="school" class="size-5"></i>
+            </div>
+            <span class="text-xs font-mono text-slate-400 font-semibold">2020</span>
+            <h3 class="text-lg font-bold text-white mt-1">
+              Secondary Education
+            </h3>
+            <p class="text-xs text-slate-300 font-medium mt-1">
+              St. Joseph School NTPC Kahalgaon
+            </p>
+            <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+              Core matriculation curriculum establishing foundational scientific, quantitative, and communication skills.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
+            <i data-lucide="check-circle" class="size-3 text-accent"></i>
+            <span>Completed</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- PROJECTS SHOWCASE (#projects)                           -->
+    <!-- ======================================================= -->
+    <section id="projects" class="py-16 border-t border-white/5">
+      
+      <!-- Eyebrow & Section Heading -->
+      <div class="space-y-3 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-mono font-medium tracking-wide glow-cyan-sm">
+          <span class="size-1.5 rounded-full bg-accent animate-pulse"></span>
+          ENGINEERED PROJECTS
+        </div>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            Featured Systems & <br class="hidden sm:inline" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-cyan-300 to-blue-400">
+              Technical Implementations.
+            </span>
+          </h2>
+          <p class="text-slate-400 text-sm max-w-md">
+            Production-focused software projects applying computer vision algorithms, normalized relational DBMS, and automated user interfaces.
+          </p>
+        </div>
+      </div>
+
+      <!-- Projects Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Project 1: Face Recognition Attendance System -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl relative group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-3">
+              <span class="text-xs font-mono text-accent uppercase tracking-wider">
+                AI & Computer Vision
+              </span>
+              <span class="px-2.5 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-accent/15 border border-accent/30 text-accent">
+                Featured Project
+              </span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white group-hover:text-accent transition-colors leading-snug">
+              Face Recognition-Based Attendance System
+            </h3>
+
+            <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Automated smart biometric attendance management system built to eliminate manual register logging and proxy attendance in academic environments.
+            </p>
+
+            <ul class="mt-4 space-y-2 text-xs sm:text-sm text-slate-400">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="size-4 text-accent shrink-0 mt-0.5"></i>
+                <span>Engineered real-time face detection utilizing <strong>Haar Cascade classifiers</strong> and facial identification using the <strong>LBPH (Local Binary Patterns Histograms)</strong> algorithm.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="size-4 text-accent shrink-0 mt-0.5"></i>
+                <span>Designed an intuitive <strong>Tkinter-based desktop GUI</strong> for student registration, multi-angle image capture dataset generation, and instant attendance marking.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="size-4 text-accent shrink-0 mt-0.5"></i>
+                <span>Automatically stores attendance logs with exact <strong>timestamps</strong> into structured records, reducing administrative time by over 80%.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-white/5 space-y-4">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Python</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">OpenCV</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">LBPH</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Haar Cascade</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Tkinter</span>
+            </div>
+
+            <div class="flex items-center justify-between text-xs pt-1">
+              <span class="inline-flex items-center gap-1.5 text-slate-400">
+                <i data-lucide="folder-git-2" class="size-3.5 text-accent"></i>
+                <span>Biometric Vision System</span>
+              </span>
+              <a href="https://www.linkedin.com/in/nitesh-kumar-079bb834b" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-accent hover:text-cyan-300 font-medium transition-colors">
+                <span>View on Profile</span>
+                <i data-lucide="arrow-up-right" class="size-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Railway Database Management System -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl relative group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-3">
+              <span class="text-xs font-mono text-cyan-300 uppercase tracking-wider">
+                Database & Systems Architecture
+              </span>
+              <span class="px-2.5 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-300">
+                DBMS System
+              </span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white group-hover:text-accent transition-colors leading-snug">
+              Railway Database Management System
+            </h3>
+
+            <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Centralized Database Management System for railway operations to streamline train schedules, passenger ticketing, coach seat allocations, and reservations.
+            </p>
+
+            <ul class="mt-4 space-y-2 text-xs sm:text-sm text-slate-400">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="size-4 text-cyan-300 shrink-0 mt-0.5"></i>
+                <span>Architected a fully <strong>normalized SQL database</strong> schema preventing data anomalies, ensuring referential integrity and consistency across concurrent bookings.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="size-4 text-cyan-300 shrink-0 mt-0.5"></i>
+                <span>Optimized complex query execution and indexing strategies for high-speed train lookup, station route scheduling, and reservation availability queries.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="size-4 text-cyan-300 shrink-0 mt-0.5"></i>
+                <span>Enabled structured data manipulation to provide actionable analytics, passenger load reports, and operational decision support for transit administration.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-white/5 space-y-4">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">SQL</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">MySQL</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">DBMS</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Normalization</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/[0.04] text-slate-300 border border-white/5">Query Tuning</span>
+            </div>
+
+            <div class="flex items-center justify-between text-xs pt-1">
+              <span class="inline-flex items-center gap-1.5 text-slate-400">
+                <i data-lucide="database" class="size-3.5 text-accent"></i>
+                <span>Relational Schema</span>
+              </span>
+              <a href="https://www.linkedin.com/in/nitesh-kumar-079bb834b" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-accent hover:text-cyan-300 font-medium transition-colors">
+                <span>View on Profile</span>
+                <i data-lucide="arrow-up-right" class="size-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- SKILLS & TECHNICAL PROFICIENCIES                        -->
+    <!-- ======================================================= -->
+    <section id="skills" class="py-16 border-t border-white/5">
+      <div class="space-y-3 mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-mono font-medium tracking-wide glow-cyan-sm">
+          <span class="size-1.5 rounded-full bg-accent animate-pulse"></span>
+          SKILLS MATRIX
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Tools, Languages & Competencies
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Programming & Data -->
+        <div class="glass-card p-5 rounded-xl space-y-3">
+          <div class="flex items-center gap-2 text-accent text-sm font-bold">
+            <i data-lucide="terminal" class="size-4"></i>
+            <span>Languages & Libraries</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-accent/10 text-accent border border-accent/20">Python</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-accent/10 text-accent border border-accent/20">SQL</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">NumPy</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Pandas</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">OpenCV</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Tkinter</span>
+          </div>
+        </div>
+
+        <!-- Backend & DB -->
+        <div class="glass-card p-5 rounded-xl space-y-3">
+          <div class="flex items-center gap-2 text-cyan-300 text-sm font-bold">
+            <i data-lucide="cpu" class="size-4"></i>
+            <span>Backend & Systems</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Flask</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Django</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">RESTful APIs</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">MySQL</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">DBMS</span>
+          </div>
+        </div>
+
+        <!-- Domain Knowledge -->
+        <div class="glass-card p-5 rounded-xl space-y-3">
+          <div class="flex items-center gap-2 text-accent text-sm font-bold">
+            <i data-lucide="pie-chart" class="size-4"></i>
+            <span>Domain Knowledge</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Business Analytics</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Data Visualization</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Decision Support</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Standard Analysis</span>
+          </div>
+        </div>
+
+        <!-- Soft Skills & Languages -->
+        <div class="glass-card p-5 rounded-xl space-y-3">
+          <div class="flex items-center gap-2 text-cyan-300 text-sm font-bold">
+            <i data-lucide="users" class="size-4"></i>
+            <span>Soft Skills & Langs</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Problem-Solving</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Team Collaboration</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-slate-300 border border-white/10">Leadership</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-accent/10 text-accent border border-accent/20">Hindi (Native)</span>
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-accent/10 text-accent border border-accent/20">English</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- CONTACT SECTION (#contact)                              -->
+    <!-- ======================================================= -->
+    <section id="contact" class="py-16 border-t border-white/5">
+      <div class="glass-card p-8 sm:p-12 rounded-3xl relative overflow-hidden text-center max-w-4xl mx-auto space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-mono font-medium tracking-wide glow-cyan-sm">
+          <span class="size-1.5 rounded-full bg-accent animate-pulse"></span>
+          GET IN TOUCH
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Let’s collaborate on your next <br class="hidden sm:inline" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-cyan-300 to-blue-400">
+            AI or Data Engineering project.
+          </span>
+        </h2>
+
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+          Open to software engineering, data science, computer vision, and database development opportunities. Feel free to reach out directly:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
+          <!-- Email -->
+          <a href="mailto:niteshkumar24047@gmail.com" class="p-4 rounded-xl bg-background/50 border border-white/10 hover:border-accent/40 transition-colors group">
+            <div class="flex items-center gap-3">
+              <div class="size-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-background transition-colors">
+                <i data-lucide="mail" class="size-4"></i>
+              </div>
+              <div class="overflow-hidden">
+                <div class="text-[11px] text-slate-400 font-mono">Email Me</div>
+                <div class="text-xs font-medium text-white truncate group-hover:text-accent transition-colors">niteshkumar24047@gmail.com</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Phone -->
+          <a href="tel:+919142473572" class="p-4 rounded-xl bg-background/50 border border-white/10 hover:border-accent/40 transition-colors group">
+            <div class="flex items-center gap-3">
+              <div class="size-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-background transition-colors">
+                <i data-lucide="phone" class="size-4"></i>
+              </div>
+              <div>
+                <div class="text-[11px] text-slate-400 font-mono">Call / WhatsApp</div>
+                <div class="text-xs font-medium text-white group-hover:text-accent transition-colors">+91 9142473572</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/nitesh-kumar-079bb834b" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-background/50 border border-white/10 hover:border-accent/40 transition-colors group">
+            <div class="flex items-center gap-3">
+              <div class="size-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-background transition-colors">
+                <i data-lucide="linkedin" class="size-4"></i>
+              </div>
+              <div>
+                <div class="text-[11px] text-slate-400 font-mono">Connect</div>
+                <div class="text-xs font-medium text-white group-hover:text-accent transition-colors">LinkedIn Profile</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- FOOTER                                                  -->
+    <!-- ======================================================= -->
+    <footer class="pt-12 pb-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+      <div>
+        © 2026 Nitesh Kumar · Government Engineering College Lakhisarai
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="#about" class="hover:text-accent transition-colors">About</a>
+        <a href="#experience" class="hover:text-accent transition-colors">Experience</a>
+        <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+        <a href="mailto:niteshkumar24047@gmail.com" class="hover:text-accent transition-colors">Contact</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
